@@ -1,73 +1,63 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {
-  if (License !== 'None') {
-    return `![GitHub License](https://img.shields.io/badge/license-${License}-blue.svg)`
-  }
-  return ''
-}
+const generateMarkdown = (response) => {
+  return `<div id="top"></div>
+  <h3 align="center">${response.projectTitle}</h3>
+## Table of Contents
+* [Project Description](#description)
+* [Installation Instructions](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Contributors](#contributors)
 
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {
-  if (License !== 'None') {
-    return `\n* [License](#License)\n`
-  }
-  return '';
-}
 
+## Description
+${response.description}
+<p align="right">(<a href="#top">back to top</a>)</p>
+## Installation Instructions
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {
-  if (License !== 'None') {
-    return `\n* [License](#License)\n`
-  }
-  return '';
-}
+${response.installation}
 
-// TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ![License](https://img.shields.io/badge/license-${encodeURIComponent(
-    data.license
-  )}-green.svg) Title: ${data.title}
-  
-  ${data.name}
-  >Deployed Application: ${data.deployment}
-  
-  ## Table of Contents
-  
-  * [Project Description](#description)
-  * [Installation Details](#installation)
-  * [Usage](#usage)
-  * [Contribution](#contribution)
-  * [License](#license)
-  
-  ## Description
-  ***
-  > *${data.description}*
-## Installation
-***
-> Instructions: ${data.installation}
->
-***
-> ${data.usage}
-## Contribution
-***
-> ${data.contribution}
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Usage
+
+${response.usage}
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ## License
-***
-> This application is covered under the *${data.license}* license
-## Questions
-***
->*If you have any questions at all please don't hesitate to review the repo or email me directly*
->
->  [![Generic badge](https://img.shields.io/badge/Github-dodgerblue.svg)](https://github.com/${data.github
-    })
-[![Generic badge](https://img.shields.io/badge/Email-dodgerblue.svg)](mailto:${data.email
-    })
-`;
+
+${
+  (() => {
+      if(response.license == "MIT License") {
+          return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`;
+      } else if(response.license === "GNU AGPLv3") {
+          return `[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)`;
+      } else if(response.license === "GNU GPLv3") {
+          return `[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`;
+      } else if(response.license === "GNU LGPLv3") {
+          return `[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)`;
+      } else if(response.license === "Mozilla Public License 2.0") {
+          return `[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)`;
+      } else if(response.license === "Apache License 2.0") {
+          return `[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`;
+      } else if(response.license === "Boost Software License 1.0") {
+          return `[![License](https://img.shields.io/badge/License-Boost%201.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)`
+      } else if(response.license === "The Unlicense") {
+          return `[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)`
+      }
+  })()
 }
+  
+## Contributors
+${response.contributors}
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Questions
+Github: [${response.githubUsername}](https://github.com/${response.githubUsername})<br/>
+
+Email: [${response.email}](${response.email})
+<p align="right">(<a href="#top">back to top</a>)</p>`
+};
 
 module.exports = generateMarkdown;

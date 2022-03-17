@@ -15,17 +15,17 @@ const questions = [
     {
         type: 'input',
         message: 'Title of your project',
-        name: 'Project Title',
+        name: 'projectTitle',
     },
     {
         type: 'input',
         message: 'Project description:',
-        name: 'Project Description',
+        name: 'description',
     },
     {
         type: 'input',
         message: 'Please provide installation instructions:',
-        name: 'Install Instructions',
+        name: 'installation',
     },
     {
         type: "input",
@@ -35,27 +35,27 @@ const questions = [
     {
         type: 'input',
         message: 'Please provide usage information if applicable:',
-        name: 'Usage',
+        name: 'usage',
     },
     {
         type: 'input',
         message: 'Please provide contributor information:',
-        name: 'Contributors',
+        name: 'contributors',
     },
     {
         type: 'input',
         message: 'Please provide testing information:',
-        name: 'Testing',
+        name: 'testing',
     },
     {
         type: 'input',
         message: 'Please enter your Github username:',
-        name: 'Github Username',
+        name: 'githubUsername',
     },
     {
         type: 'input',
         message: 'Please enter your email address:',
-        name: 'Email',
+        name: 'email',
     },
     {
         type: 'list',
